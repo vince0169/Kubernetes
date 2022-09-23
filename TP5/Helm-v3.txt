@@ -1,0 +1,19 @@
+# Installation de Helm v3
+$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+$ chmod 700 get_helm.sh
+$ ./get_helm.sh 
+
+# Vérification de l'installation
+$ helm version
+
+# Ajout du repo bitnami
+$ helm repo add bitnami https://charts.bitnami.com/bitnami 
+
+# Installation de Wordpress avec surcharges des valeurs voulues 
+$ helm install wordpress bitnami/wordpress -f values.yaml
+
+# Vérification des charts installés
+$ helm ls
+
+# Vérification depuis son browser
+http://<IP_MINIKUBE>:30008/
