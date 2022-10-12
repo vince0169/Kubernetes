@@ -48,3 +48,19 @@ We will install Helm v3 and use the wordpress chart to deploy this application.
 We will override some variables (like "wordpressUsername" or
 "wordpressPassword") using the values.yaml file to customize our deployment
 So in this repository you will find the values.yaml and a Helm-v3.txt file which list all the commands using to perform this exercice
+
+## 📁 Mini-projet 📁
+
+The goal of this project is to deploy Wordpress using manifests (not Helm)
+
+To perform this I have followed the next steps :
+
+- create a namespace (wordpress-namespace.yml)
+- write a file (app-wordpress-secret.yml) to manage sensitive data (wordpress_db_password, mysql_password ect...)
+- create a Mysql deployment with one replica (mysql-deployment.yml)
+- create a Wordpress deployment (wordpress-deployment.yml) with the right environment variables to connect to the mysql database 
+- create a ClusterIP (service-clusterip-mysql.yml) service to expose the Mysql pod
+- create of a Nodeport service (service-nodeport-wordpress.yml) to expose the Wordpress frontend
+
+
+Also you will find a cheat sheet with some useful commands
