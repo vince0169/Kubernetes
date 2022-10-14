@@ -1,0 +1,28 @@
+To create the namespace "wordpress" :
+$ kubectl apply -f app-wordpress-namespace.yml
+namespace/wordpress created
+
+Management of the secrets :
+After choosing a password, we have to encode it :
+$ echo toto | base64 
+dG90bwo=
+Then we can store each secrets in the app-wordpress-secret.yml file and apply : kubectl apply -f app-wordpress-secret.yml
+secret/app-wordpress-secret created
+
+
+To create the Mysql deployment:
+$ kubectl apply -f mysql-deployment.yml
+deployment.apps/wp-mysql created
+
+To create the ClusterIP service:
+$ kubectl apply -f service-clusterip-mysql.yml
+service/wp-mysql created
+(be careful the name of the clusterIP must be the same as WORDPRESS_DB_HOST value)
+
+To create the Wordpress deployment:
+$ kubectl apply -f wordpress-deployment.yml
+deployment.apps/wordpress created
+
+To create the NodePort service:
+$ kubectl apply -f service-nodeport-wordpress.yml
+service/wordpress created
